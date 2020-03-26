@@ -3,7 +3,7 @@ function mapOverlap (quads, scale = 1) { // { x: number, y: number, width: numbe
   let evenOdd, node, less, leftRight
 
   for (const quad of quads) {
-    if (!quad.x || !quad.y) continue
+    if (isNaN(quad.x) || isNaN(quad.y)) continue
     // first quad
     if (!root) {
       quad.overlap = false
@@ -45,17 +45,17 @@ function isOverlap (ref, val, scale) {
   // setup rectangles [left, bottom, right, top]
   // ref
   const [refOffsetX, refOffsetY] = offsets(ref)
-  x = ref.x * scale
-  y = ref.y * scale
-  const a = [x + refOffsetX, y + refOffsetY, x + ref.width + refOffsetX, y + ref.width + refOffsetY]
+  x = (ref.x * scale) | 0
+  y = (ref.y * scale) | 0
+  const a = [x + refOffsetX, y + refOffsetY, x + ref.width + refOffsetX, y + ref.height + refOffsetY]
   // val
   const [valOffsetX, valOffsetY] = offsets(val)
-  x = val.x * scale
-  y = val.y * scale
-  const b = [x + valOffsetX, y + valOffsetY, x + val.width + valOffsetX, y + val.width + valOffsetY]
+  x = (val.x * scale) | 0
+  y = (val.y * scale) | 0
+  const b = [x + valOffsetX, y + valOffsetY, x + val.width + valOffsetX, y + val.height + valOffsetY]
+  // console.log('ab', a, b)
   // check overlap
-  if (a[0] < b[2] && a[2] > b[0] && a[4] > b[1] && a[1] < b[4]) return true
-  return false
+  return !(a[0] > b[2]) && !(a[2] < b[0]) && !(a[1] > b[3]) && !(a[3] < b[1])
 }
 
 function offsets (val) {

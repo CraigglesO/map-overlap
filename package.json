@@ -1,6 +1,6 @@
 {
   "name": "map-overlap",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Ensure rectangles don't overlap eachother.",
   "main": "lib/index.js",
   "scripts": {

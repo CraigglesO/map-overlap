@@ -18,7 +18,7 @@ const { mapOverlap } = require('./lib')
 
 const quads = []
 
-for (let i = 0; i < 1000; i++) {
+for (let i = 0; i < 100; i++) {
   quads.push({
     x: Math.floor(Math.random() * (512 - 0 + 1) + 0),
     y: Math.floor(Math.random() * (512 - 0 + 1) + 0),

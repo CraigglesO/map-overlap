@@ -37,6 +37,8 @@ function mapOverlap (quads, scale = 1) { // { x: number, y: number, width: numbe
       }
     }
   }
+
+  return quads
 }
 
 // if quad has an align, check.
@@ -53,7 +55,6 @@ function isOverlap (ref, val, scale) {
   x = (val.x * scale) | 0
   y = (val.y * scale) | 0
   const b = [x + valOffsetX, y + valOffsetY, x + val.width + valOffsetX, y + val.height + valOffsetY]
-  // console.log('ab', a, b)
   // check overlap
   return !(a[0] > b[2]) && !(a[2] < b[0]) && !(a[1] > b[3]) && !(a[3] < b[1])
 }

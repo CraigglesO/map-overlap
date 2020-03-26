@@ -1,4 +1,4 @@
-function mapOverlap (quads) { // { x: number, y: number, width: number, height: number }
+function mapOverlap (quads, scale = 1) { // { x: number, y: number, width: number, height: number }
   let root = null
   let evenOdd, node, less, leftRight
 
@@ -17,7 +17,7 @@ function mapOverlap (quads) { // { x: number, y: number, width: number, height: 
     while (true) {
       evenOdd = !evenOdd
       // always check overlap first
-      if (isOverlap(node, quad)) {
+      if (isOverlap(node, quad, scale)) {
         quad.overlap = true
         break
       }
@@ -40,14 +40,19 @@ function mapOverlap (quads) { // { x: number, y: number, width: number, height: 
 }
 
 // if quad has an align, check.
-function isOverlap (ref, val) {
+function isOverlap (ref, val, scale) {
+  let x, y
   // setup rectangles [left, bottom, right, top]
   // ref
   const [refOffsetX, refOffsetY] = offsets(ref)
-  const a = [ref.x + refOffsetX, ref.y + refOffsetY, ref.x + ref.width + refOffsetX, ref.y + ref.width + refOffsetY]
+  x = ref.x * scale
+  y = ref.y * scale
+  const a = [x + refOffsetX, y + refOffsetY, x + ref.width + refOffsetX, y + ref.width + refOffsetY]
   // val
   const [valOffsetX, valOffsetY] = offsets(val)
-  const b = [val.x + valOffsetX, val.y + valOffsetY, val.x + val.width + valOffsetX, val.y + val.width + valOffsetY]
+  x = val.x * scale
+  y = val.y * scale
+  const b = [x + valOffsetX, y + valOffsetY, x + val.width + valOffsetX, y + val.width + valOffsetY]
   // check overlap
   if (a[0] < b[2] && a[2] > b[0] && a[4] > b[1] && a[1] < b[4]) return true
   return false

@@ -1,6 +1,6 @@
 {
   "name": "map-overlap",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Ensure rectangles don't overlap eachother.",
   "main": "lib/index.js",
   "scripts": {
@@ -21,25 +21,16 @@
   },
   "homepage": "https://github.com/CraigglesO/map-overlap#readme",
   "devDependencies": {
-    "@babel/cli": "^7.4.3",
-    "@babel/core": "^7.4.3",
-    "@babel/plugin-syntax-flow": "^7.2.0",
-    "@babel/preset-env": "^7.4.3",
-    "@babel/preset-flow": "^7.0.0",
-    "babel-eslint": "^10.0.1",
-    "core-js": "^3.0.1",
-    "eslint": "^5.16.0",
-    "eslint-plugin-flowtype": "^3.6.1",
-    "flow-bin": "^0.97.0",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
     "standard": "*",
     "tap-summary": "^4.0.0",
-    "tape": "^4.10.1",
-    "yarn-upgrade-all": "^0.5.0"
+    "tape": "^4.13.2"
   },
   "standard": {
     "parser": "babel-eslint",
-    "plugins": [
-      "flowtype"
-    ]
+    "plugins": []
   }
 }
